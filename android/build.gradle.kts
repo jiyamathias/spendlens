@@ -1,7 +1,22 @@
+// android/build.gradle.kts
 allprojects {
     repositories {
         google()
         mavenCentral()
+    }
+
+    // Fix for packages missing namespace (isar_flutter_libs)
+    afterEvaluate {
+        if (this.hasProperty("android")) {
+            val androidExtension = this.extensions.findByName("android")
+            if (androidExtension is com.android.build.gradle.LibraryExtension) {
+                if (androidExtension.namespace == null || androidExtension.namespace!!.isEmpty()) {
+                    androidExtension.namespace = this.group.toString().ifEmpty {
+                        "com.fallback.${this.name}"
+                    }
+                }
+            }
+        }
     }
 }
 

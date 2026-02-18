@@ -24,3 +24,15 @@ plugins {
 }
 
 include(":app")
+
+// Fix for isar_flutter_libs and other packages missing namespace
+gradle.beforeProject {
+    if (this.hasProperty("android")) {
+        val androidExtension = this.extensions.findByName("android")
+        if (androidExtension is com.android.build.gradle.LibraryExtension) {
+            if (androidExtension.namespace == null) {
+                androidExtension.namespace = this.group.toString()
+            }
+        }
+    }
+}
