@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/images/architecture.png" alt="SpendLens Banner" width="100%" />
+</p>
+
 # SpendLens
 
 A premium offline-first personal finance intelligence engine built with Flutter.
