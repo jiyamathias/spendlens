@@ -49,3 +49,8 @@ A premium offline-first personal finance intelligence engine built with Flutter.
 1. Install dependencies:
    ```bash
    flutter pub get
+
+2. Generate Isar adapters and model files:
+   ```bash
+   dart run build_runner build --delete-conflicting-outputs
+   
